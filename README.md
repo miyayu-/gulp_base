@@ -4,7 +4,6 @@ gulp_base
 最近お気に入りのgulpfileをいれたよ。
 
 ## 入ってるプラグインメモ
-=========
 
 ### gulp-ruby-sass
 gulpでsassが使えるようになるよ。
@@ -16,7 +15,6 @@ gulpでベンダープレフィックスが自動で付くようになるよ。
 エラーが出てもwatchが止まらないよ。
 
 #### 上記三つの組み合わせ
-=========
 gulp.task('sass', function() {
 	gulp.src('sass/*scss')
 		.pipe(plumber())
