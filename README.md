@@ -14,7 +14,7 @@ gulpでベンダープレフィックスが自動で付くようになるよ。
 ### gulp-plumber
 エラーが出てもwatchが止まらないよ。
 
-#### 上記三つの組み合わせ
+#### 例：上記三つの組み合わせ
 
 ```
 gulp.task('sass', function() {
@@ -29,5 +29,28 @@ gulp.task('sass', function() {
 		.pipe(gulp.dest('css'));
 });
 ```
+
+### gulp.spritesmith
+スプライト画像が簡単に作れるようになるよ。
+
+#### 例：スプライトのタスク
+
+```
+gulp.task('sprite', function () {
+  var spriteData = gulp.src('_sprite/*.png') //スプライトにする画像
+  .pipe(spritesmith({
+    imgName: 'sprite.png', //スプライトの画像
+    cssName: '_sprite.scss', //生成されるscss
+    imgPath: '../img/sprite.png', //生成されるscssに記載されるパス
+    cssFormat: 'scss', //フォーマット
+    cssVarMap: function (sprite) {
+      sprite.name = 'sprite-' + sprite.name; //VarMap(生成されるScssにいろいろな変数の一覧を生成)
+    }
+  }));
+  spriteData.img.pipe(gulp.dest('img/')); //imgNameで指定したスプライト画像の保存先
+  spriteData.css.pipe(gulp.dest('sass/')); //cssNameで指定したcssの保存先
+});
+```
+
 
 
