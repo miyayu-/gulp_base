@@ -16,7 +16,7 @@ gulpでベンダープレフィックスが自動で付くようになるよ。
 
 #### 例：上記三つの組み合わせ
 
-```
+```rb
 gulp.task('sass', function() {
 	gulp.src('sass/*scss')
 		.pipe(plumber())
@@ -35,7 +35,7 @@ gulp.task('sass', function() {
 
 #### 例：スプライトのタスク
 
-```
+```rb
 gulp.task('sprite', function () {
   var spriteData = gulp.src('_sprite/*.png') //スプライトにする画像
   .pipe(spritesmith({
