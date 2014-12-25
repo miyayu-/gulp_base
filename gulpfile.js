@@ -1,22 +1,24 @@
 
 var gulp = require('gulp'),
-	sass = require('gulp-ruby-sass'), /* sassを入れる */
-	autoprefixer = require('gulp-autoprefixer'), /* ベンダープレフィックスが自動でつく */
-	plumber = require('gulp-plumber'), /* エラーが出てもwatchを止めない */
-	spritesmith = require('gulp.spritesmith'), /* CSSスプライトを作成する */
+  sass = require('gulp-ruby-sass'), /* sassを入れる */
+  plumber = require('gulp-plumber'), /* エラーが出てもwatchを止めない */
+  spritesmith = require('gulp.spritesmith'), /* CSSスプライトを作成する */
   hologram = require('gulp-hologram'), /* スタイルガイド */
-  cached = require('gulp-cached'); /* 変更があったファイルだけに処理を行う */
+  pleeease = require('gulp-pleeease'); /* 圧縮やベンダープレフィックスをつける */
 
 gulp.task('sass', function() {
-	gulp.src('sass/*scss')
-		.pipe(plumber())
-		.pipe(sass({
-			style: 'expanded',
-			noCache: true
-		}))
-		.on('error', function (err) { console.log(err.message); })
-		.pipe(autoprefixer("last 2 version", "ie 9", "Android 2.3"))
-		.pipe(gulp.dest('css'));
+  return gulp.src('./sass/*.scss')
+    .pipe(plumber())
+    .pipe(sass({ style: 'expanded' }))
+    .pipe(gulp.dest('./css'));
+});
+gulp.task('ple', function() {
+    return gulp.src('./css/*.css')
+    .pipe(pleeease({
+        autoprefixer: {"browsers": ["last 1 versions"]},  // ベンダープレフィックス対応バージョンの指定
+        minifier: true //圧縮の有無 true/false
+    }))
+    .pipe(gulp.dest('./css/'));
 });
 
 gulp.task('sprite', function () {
@@ -34,17 +36,20 @@ gulp.task('sprite', function () {
   spriteData.css.pipe(gulp.dest('sass/')); //cssNameで指定したcssの保存先
 });
 
+gulp.task('watch', function() {
+  gulp.watch(['./sass/*.scss'], ['sass']);
+  return gulp.watch(['./css/*.css'], ['ple']);
+});
+
+// spriteのタスク
+gulp.task("css-sprite", function() {
+    gulp.run('sprite');
+});
+
 // hologramのタスク
 gulp.task('hologram', function() {
   return gulp.src('hologram_config.yml')
     .pipe(hologram());
 });
 
-gulp.task("default", function() {
-    gulp.watch("sass/*.scss",["sass"]);
-    gulp.watch("_guide/*.css",["hologram"]);
-});
-
-gulp.task("css-sprite", function() {
-    gulp.run('sprite');
-});
+gulp.task('default', ['watch']);
