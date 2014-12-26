@@ -8,11 +8,14 @@ gulp_base
 ### gulp-ruby-sass
 gulpでsassが使えるようになるよ。
 
-### gulp-autoprefixer
-gulpでベンダープレフィックスが自動で付くようになるよ。
+### gulp-pleeease
+ベンダープレフィックスとCSSが圧縮できるよ。autoprefixerより便利だよ
 
 ### gulp-plumber
 エラーが出てもwatchが止まらないよ。
+
+### gulp-horogram
+horogramというスタイルガイドをつかえるよ。
 
 #### 例：上記三つの組み合わせ
 
