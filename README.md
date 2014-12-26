@@ -14,8 +14,8 @@ gulpでsassが使えるようになるよ。
 ### gulp-plumber
 エラーが出てもwatchが止まらないよ。
 
-### gulp-horogram
-horogramというスタイルガイドをつかえるよ。
+### gulp-hologram
+hologramというスタイルガイドをつかえるよ。
 
 #### 例：上記三つの組み合わせ
 
