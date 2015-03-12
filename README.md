@@ -55,8 +55,8 @@ gulp.task('sprite', function () {
 http://ameblo.jp/ca-1pixel/entry-11925409995.html
 
 github更新方法
-  git commit -a -m"コメントを入れる"
-  git push
+git commit -a -m"コメントを入れる"  
+git push  
 
 
 ## 更新履歴
