@@ -1,6 +1,9 @@
 gulp_base
 =========
 
+
+
+
 最近お気に入りのgulpfileをいれたよ。
 
 ## 入ってるプラグインメモ
@@ -14,24 +17,17 @@ gulpでsassが使えるようになるよ。
 ### gulp-plumber
 エラーが出てもwatchが止まらないよ。
 
-### gulp-hologram
-hologramというスタイルガイドをつかえるよ。
+### gulp-changed
+変更されたファイルのみ更新されるよ。
 
-#### 例：上記三つの組み合わせ
+### gulp-imagemin
+画像を圧縮してくれるよ。
 
-```rb
-gulp.task('sass', function() {
-	gulp.src('sass/*scss')
-		.pipe(plumber())
-		.pipe(sass({
-			style: 'expanded',
-			noCache: true
-		}))
-		.on('error', function (err) { console.log(err.message); })
-		.pipe(autoprefixer("last 2 version", "ie 9", "Android 2.3"))
-		.pipe(gulp.dest('css'));
-});
-```
+### gulp-uglify
+jsを圧縮してくれるよ。
+
+### gulp-ejs
+ejsファイルを使ってテンプレートが扱えるよ。
 
 ### gulp.spritesmith
 スプライト画像が簡単に作れるようになるよ。
@@ -57,3 +53,7 @@ gulp.task('sprite', function () {
 
 メモ
 http://ameblo.jp/ca-1pixel/entry-11925409995.html
+
+## 更新履歴
+2015/03/12 gulpfile.jsとpackage.jsonを最新に更新
+
