@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+// ===================================================================
+// 各SCSSファイルのインポート
+// ===================================================================
+
+// リセットCSS、フォントサイズ
+@import "reset";
+
+body{
+	position: relative;
+	font-family: "Open Sans","ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,"游ゴシック",YuGothic,sans-serif;
+	font-size: 12px;
+	color: #333;
+	-webkit-text-size-adjust: none;
+
+	a{
+		text-decoration: none;
+		color: #1f508b;
+		transition: .20s ease-in;
+
+	    &:hover{
+	    	opacity: 0.8;
+	    }
+	}
+}
